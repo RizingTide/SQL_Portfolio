@@ -18,3 +18,15 @@ VALUES
 (13, "Gran Turismo 7", 900, 69.99, "Sony Interactive Entertainment"),
 (14, "Kirby and the Forgotten Land", 800, 59.99, "Nintendo"),
 (15, "NBA 2K23", 985, 69.99, "2K Games");
+
+--What is the total quantity of all items?
+SELECT SUM(quantity) FROM gaming_store;
+
+--Display the database ordered by price. 
+SELECT * FROM gaming_store ORDER BY price desc;
+
+--How many games do each publisher have? What is their largest price?
+SELECT publisher, max(price) as Price, count(publisher) as "# of games"FROM gaming_store GROUP BY publisher ORDER BY "# of games" desc;
+
+-- Which publisher is most popular? Who has the most games and brought in the most revenue ?
+SELECT publisher, sum(quantity) as "Total Games Sold", quantity*price as revenue FROM gaming_store GROUP BY publisher ORDER BY revenue desc;
